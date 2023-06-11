@@ -1,33 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Payment.css'
 import { useStateValue } from './StateProvider'
 import CheckoutProduct from './CheckoutProduct';
-import { Link } from "react-router-dom";
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { Link, useHistory } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from './reducer';
+import { CardElement } from "@stripe/react-stripe-js"
+
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
 
-    const stripe = useStripe();
-    const elements = useElements();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    };
 
-    const [error, setError] = useState(null);
-    const [disabled, setDisabled] = useState(true);
-
-    const handleSubmit = e => {
-        //stripe 
-    }
-
-    const handleChange = event => {
-        /* listen for changes inside CardElement and dispaly any errors
-        as the customer types in their card details */
-        setDisabled(event.empty);
-        setError(event.error ? event.error.message : "");
-    }
-
-
+    const handleChange = event => {};
+        
   return (
     <div className='payment'>
         <div className='payment__container'>
@@ -88,16 +77,16 @@ function Payment() {
                                // thousandSeparator={true}
                                prefix={"₹"}
                             />
-                        </div>
+                           <button>Buy Now</button>
+                           </div>
                     </form>
                 </div>
             </div>
         </div>
-      
     </div>
 
 
-  )
+  );
 }
 
-export default Payment
+export default Payment;
