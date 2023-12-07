@@ -24,10 +24,11 @@
 4. Usage
 
    npm start
+   
    Visit http://localhost:3000 in your web browser.
 
 **Features**
 
-Product listing
-Product details
-Shopping cart
+1) Product listing
+2) Product details
+3) Shopping cart
